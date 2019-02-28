@@ -1,0 +1,31 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-name:
+      cluster-nodes:
+  datasource:
+    name: search
+    url: jdbc:mysql://111.230.222.169:3306/test
+    username: root
+    password: plpl1234
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+
+mybatis_config_file:  spring/spring-dataSource-config.xml
+
+#数据源对应的mapper文件路径
+source_mapper_path:  elasticsearch/*.xml
+#entity_package 大概是这个意思  这个包下面的Bean 在Mapper文件中可以直接写类名
+source_entity_package: com.example.study.domain.elasticsearch
