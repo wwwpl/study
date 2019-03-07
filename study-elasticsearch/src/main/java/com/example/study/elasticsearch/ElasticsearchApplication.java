@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * Elasticsearch 学习进阶之路
  *
- * @author wangfei
+ * @author Fei.Wang
  * @date 2019年2月26日15:15:09
  */
 @ComponentScan("com.example.study")

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 数据结构算法学习之路
  *
- * @author wangfei
+ * @author Fei.Wang
  * @date 2019年2月26日15:15:55
  */
 @SpringBootApplication

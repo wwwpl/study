@@ -25,7 +25,7 @@
         <module>study-service</module>
         <module>study-common</module>
         <module>study-dao</module>
-        <module>study-arithmetic</module>
+        <module>study-algorithm</module>
         <module>study-domain</module>
         <module>study-elasticsearch</module>
         <module>study-design</module>
