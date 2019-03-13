@@ -30,6 +30,7 @@
         <module>study-elasticsearch</module>
         <module>study-design</module>
         <module>study-algorithm</module>
+        <module>study-sentinel</module>
     </modules>
 
     <dependencies>
@@ -43,6 +44,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

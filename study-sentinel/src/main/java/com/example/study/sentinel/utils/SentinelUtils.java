@@ -28,31 +28,31 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class SentinelUtils {
 
-    Double timeCount = 2000D;
-    Double radioCount = 0.2;
+    static Double timeCount = 200D;
+    static Double radioCount = 0.2;
 
-    Boolean isOpenTime = true;
-    Boolean isOpenRadio = true;
+    static Boolean isOpenTime = true;
+    static Boolean isOpenRadio = true;
 
-    Integer timeWindow = 5;
-    Integer radioWindow = 5;
+    static Integer timeWindow = 5;
+    static Integer radioWindow = 5;
 
-    Integer maxCpuLoad = 0;
+    static Integer maxCpuLoad = 0;
 
-    final Integer CPU = -1;
+    final static Integer CPU = -1;
 
 
-    String updateKey = "online";
-    String preUpdateKey = "";
+    static String updateKey = "online";
+    static String preUpdateKey = "";
 
-    private Map<String, String> keyMaps = new ConcurrentHashMap<String, String>();
+    private static Map<String, String> keyMaps = new ConcurrentHashMap<String, String>();
 
     /**
      * 降级规则
      *
      * @param key 资源
      */
-    public void initDegradeRule(String key, String methodKey) {
+    public static void initDegradeRule(String key, String methodKey) {
 
         String mapKey = key + "-" + methodKey;
         // 检测是否开启系统保护
@@ -114,7 +114,7 @@ public class SentinelUtils {
     /**
      * 系统保护
      */
-    public void initSystemRule() {
+    public static void initSystemRule() {
         // 系统保护
         SystemRule systemRule = new SystemRule();
         if (maxCpuLoad > 0) {
@@ -138,10 +138,10 @@ public class SentinelUtils {
             HttpUtils.timeoutMethod(3000);
         } catch (BlockException blockException) {
             System.out.println("[MethodInvoke]请求被熔断降级" + url + "    " + blockException.getRuleLimitApp());
-        } catch (Throwable throwable){
+        } catch (Throwable throwable) {
             System.out.println("methodInvoke请求异常");
         } finally {
-            if (entry !=null){
+            if (entry != null) {
                 entry.exit();
             }
         }
@@ -150,32 +150,32 @@ public class SentinelUtils {
     }
 
     public static void main(String[] args) {
-        final SentinelUtils sentinelUtils = new SentinelUtils();
-
-        for (int i = 0; i < 10; i++) {
-            final int fi = i;
-            Thread entryThread = new Thread(new Runnable() {
-
-                @Override
-                public void run() {
-                    int count = 0;
-                    while (true) {
-                        count++;
-                        try {
-                            sentinelUtils.updateKey = "456";
-                            sentinelUtils.methodInvoke("https://jd.com" + fi, "11111");
-                            //serviceProxy.methodInvoke("aaa", new EncryRequest());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-            });
-            entryThread.setName("working-thread-" + i);
-            entryThread.start();
-        }
-        sentinelUtils.updateKey = "123";
+//        final SentinelUtils sentinelUtils = new SentinelUtils();
+//
+//        for (int i = 0; i < 10; i++) {
+//            final int fi = i;
+//            Thread entryThread = new Thread(new Runnable() {
+//
+//                @Override
+//                public void run() {
+//                    int count = 0;
+//                    while (true) {
+//                        count++;
+//                        try {
+//                            sentinelUtils.updateKey = "456";
+//                            sentinelUtils.methodInvoke("https://jd.com" + fi, "11111");
+//                            //serviceProxy.methodInvoke("aaa", new EncryRequest());
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//
+//            });
+//            entryThread.setName("working-thread-" + i);
+//            entryThread.start();
+//        }
+//        sentinelUtils.updateKey = "123";
     }
 
 
