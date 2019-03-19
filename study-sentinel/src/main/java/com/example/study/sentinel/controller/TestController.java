@@ -6,9 +6,11 @@ import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
 import com.alibaba.csp.sentinel.util.TimeUtil;
+import com.example.study.domain.elasticsearch.People;
 import com.example.study.sentinel.config.ApplicationContextUtil;
 import com.example.study.sentinel.service.SenDemoService;
 import com.example.study.sentinel.utils.SentinelUtils;
+import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,14 +37,14 @@ public class TestController {
     private static volatile boolean stop = false;
     private static final int threadCount = 100;
     private static int seconds = 60 + 40;
-
+    Gson gson = new Gson();
 
     @GetMapping("/")
-    public String getTest(String beanName) {
-
-        tick();
-        start();
-        return "1";
+    public String getTest(People people) {
+        log.info(people.getName() + "-----------");
+//        tick();
+//        start();
+        return gson.toJson(people);
     }
 
     private static void start() {
