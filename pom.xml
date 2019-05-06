@@ -32,6 +32,7 @@
         <module>study-algorithm</module>
         <module>study-sentinel</module>
         <module>study-other</module>
+        <module>study-flink</module>
         <module>study-annotation</module>
     </modules>
 
