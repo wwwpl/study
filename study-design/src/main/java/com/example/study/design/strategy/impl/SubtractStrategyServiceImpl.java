@@ -1,6 +1,6 @@
-package com.example.study.design.service.impl;
+package com.example.study.design.strategy.impl;
 
-import com.example.study.design.service.StrategyService;
+import com.example.study.design.strategy.StrategyService;
 
 /**
  * 定义了减法策略，始终返回正数

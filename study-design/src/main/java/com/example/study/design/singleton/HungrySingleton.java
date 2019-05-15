@@ -1,4 +1,4 @@
-package com.example.study.design.example;
+package com.example.study.design.singleton;
 
 /**
  * 饿汉方式创建单例模式

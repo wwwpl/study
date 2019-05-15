@@ -1,6 +1,6 @@
-package com.example.study.design.environment;
+package com.example.study.design.strategy;
 
-import com.example.study.design.service.StrategyService;
+import com.example.study.design.strategy.StrategyService;
 
 /**
  * 环境角色

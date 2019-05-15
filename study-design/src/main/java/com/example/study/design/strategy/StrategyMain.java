@@ -1,8 +1,6 @@
-package com.example.study.design.main;
+package com.example.study.design.strategy;
 
-import com.example.study.design.environment.StrategyEnvironment;
-import com.example.study.design.service.StrategyService;
-import com.example.study.design.service.impl.AddStrategyServiceImpl;
+import com.example.study.design.strategy.impl.AddStrategyServiceImpl;
 
 /**
  * 策略模式
