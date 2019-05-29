@@ -34,6 +34,7 @@
         <module>study-other</module>
         <module>study-flink</module>
         <module>study-annotation</module>
+        <module>study-thread</module>
     </modules>
 
     <dependencies>
