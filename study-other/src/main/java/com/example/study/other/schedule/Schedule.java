@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class Schedule {
     @Scheduled(cron = "0/5 * * * * *")
     public void scheduled(){
-        log.info("=====>>>>>使用cron  {}",System.currentTimeMillis());
+        log.info("=====>>>>>使用cron{}",System.currentTimeMillis());
     }
     @Scheduled(fixedRate = 5000)
     public void scheduled1() {

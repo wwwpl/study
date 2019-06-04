@@ -36,6 +36,7 @@
         <module>study-annotation</module>
         <module>study-thread</module>
         <module>study-redis</module>
+        <module>study-rpc</module>
     </modules>
 
     <dependencies>
