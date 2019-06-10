@@ -31,6 +31,7 @@ public class TestKafkaStream {
 
             Properties properties = new Properties();
             properties.setProperty("bootstrap.servers", "localhost:9092");
+            properties.setProperty("zookeeper.connect", "localhost:2181");
             properties.setProperty("group.id", "test");
 
             FlinkKafkaConsumer010<String> consumer =
@@ -57,8 +58,8 @@ public class TestKafkaStream {
             keyedStream.print();
             keyedStream.writeAsText("H:\\FlinkTest\\KafkaFlinkTest.txt");
             environment.execute("Kafka-Flink Test");
-        }catch (Exception e){
-            System.out.println("----------"+e);
+        } catch (Exception e) {
+            System.out.println("----------" + e);
         }
     }
 }

@@ -37,7 +37,7 @@
               </filters>
               <transformers>
                 <transformer>
-                  <mainClass>com.example.study.flink.stream.TestFlinkStream</mainClass>
+                  <mainClass>com.example.study.flink.stream.TestKafkaStream</mainClass>
                 </transformer>
                 <transformer>
                   <resource>META-INF/spring.handlers</resource>
