@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.example.study.queue.StudyQueueApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.655 s <<< FAILURE! - in com.example.study.queue.StudyQueueApplicationTests
+contextLoads(com.example.study.queue.StudyQueueApplicationTests)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalStateException: Error processing condition on org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration.kafkaProducerListener
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration] from ClassLoader [sun.misc.Launcher$AppClassLoader@4aa298b7]
+Caused by: java.lang.NoClassDefFoundError: org/springframework/kafka/core/KafkaAdmin
+Caused by: java.lang.ClassNotFoundException: org.springframework.kafka.core.KafkaAdmin
+
