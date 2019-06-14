@@ -2,6 +2,7 @@ package com.example.study.flink.stream;
 
 import com.example.study.flink.kafka.MessageSplitter;
 import com.example.study.flink.kafka.MessageWaterEmitter;
+import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.java.tuple.Tuple;
 import org.apache.flink.api.java.tuple.Tuple2;
@@ -30,36 +31,31 @@ public class TestKafkaStream {
             environment.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);//
 
             Properties properties = new Properties();
-            properties.setProperty("bootstrap.servers", "localhost:9092");
-            properties.setProperty("zookeeper.connect", "localhost:2181");
+            properties.setProperty("bootstrap.servers", "106.12.51.81:9092");
+            properties.setProperty("zookeeper.connect", "106.12.51.81:2181");
             properties.setProperty("group.id", "test");
 
             FlinkKafkaConsumer010<String> consumer =
-                    new FlinkKafkaConsumer010<>("wf", new SimpleStringSchema(), properties);
+                    new FlinkKafkaConsumer010<>("test", new SimpleStringSchema(), properties);
             // consumer.assignTimestampsAndWatermarks(new MessageWaterEmitter());
-            DataStream<Tuple2<String, Long>> keyedStream = environment
-                    .addSource(consumer)
-                    .flatMap(new MessageSplitter())
-                    .keyBy(0)
-                    .timeWindow(Time.seconds(2))
-                    .apply(new WindowFunction<Tuple2<String, Long>, Tuple2<String, Long>, Tuple, TimeWindow>() {
-                        public void apply(Tuple tuple, TimeWindow window, Iterable<Tuple2<String, Long>> input, Collector<Tuple2<String, Long>> out) throws Exception {
-                            long sum = 0L;
-                            int count = 0;
-                            for (Tuple2<String, Long> record : input) {
-                                sum += record.f1;
-                                count++;
-                            }
-                            Tuple2<String, Long> result = input.iterator().next();
-                            result.f1 = sum / count;
-                            out.collect(result);
-                        }
-                    });
+            DataStream<Tuple2<String, Integer>> keyedStream = environment
+                    .addSource(consumer).flatMap(new LineSplitter()).keyBy(0).sum(1);
             keyedStream.print();
-            keyedStream.writeAsText("H:\\FlinkTest\\KafkaFlinkTest.txt");
             environment.execute("Kafka-Flink Test");
         } catch (Exception e) {
             System.out.println("----------" + e);
+        }
+    }
+
+    public static final class LineSplitter implements FlatMapFunction<String, Tuple2<String, Integer>> {
+        private static final long serialVersionUID = 1L;
+        public void flatMap(String value, Collector<Tuple2<String, Integer>> out) {
+            String[] tokens = value.toLowerCase().split("\\W+");
+            for (String token : tokens) {
+                if (token.length() > 0) {
+                    out.collect(new Tuple2<String, Integer>(token, 1));
+                }
+            }
         }
     }
 }

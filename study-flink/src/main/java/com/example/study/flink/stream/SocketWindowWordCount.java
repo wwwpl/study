@@ -31,7 +31,7 @@ public class SocketWindowWordCount {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         // （2）获取数据流，例子中是从指定端口的socket中获取用户输入的文本
-        DataStream<String> text = env.socketTextStream("127.0.0.1", port, "\n");
+        DataStream<String> text = env.socketTextStream("localhost", port, "\n");
 
         // （3）transformation操作，对数据流实现算法
         DataStream<WordWithCount> windowCounts = text
