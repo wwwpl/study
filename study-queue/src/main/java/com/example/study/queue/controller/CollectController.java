@@ -32,13 +32,5 @@ public class CollectController {
             log.error("发送kafka失败", e);
         }
     }
-
-    @GetMapping(value = "/recive")
-    public void reciveKafka() {
-        while (true){
-
-        }
-    }
-
 }
 
