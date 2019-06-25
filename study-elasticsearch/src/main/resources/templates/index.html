@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="../js/vue.js"></script>
+    <script type="application/javascript" src="../js/vue-resource.min.js"></script>
+    <script type="application/javascript" src="../js/index.js"></script>
+    <link href="../css/index.css" rel="stylesheet" type="text/css"/>
+    <script type="application/javascript" src="../js/axios.min.js"></script>
+</head>
+<body>
+<div>
+    <div id="nav-layout">
+        <el-input v-model="input" placeholder="请输入搜索内容" style="width: 50%" @change="submitForm()"></el-input>
+        <el-popover
+                placement="bottom"
+                width="200px"
+                trigger="click"
+                v-model="visible"
+        >
+            <div v-for="o in da" :key="o" class="text item">
+                {{o}}
+            </div>
+        </el-popover>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#nav-layout',
+        data() {
+            return {
+                input: '',
+                da: [],
+                visible:false
+            }
+        },
+        methods: {
+
+            submitForm(){
+                var  _this=this;
+                this.visible = true;
+                axios.get("/queryCompletion",{
+                    params: {
+                        words: this.input
+                    }
+                }).then(function (response) {
+                    if (response.data !=null){
+                        _this.da = response.data;
+                    }
+                }).catch(function (error) {
+                        console.log(error);
+                });
+            }
+
+        }
+
+    })
+</script>
+</body>
+</html>
