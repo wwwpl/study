@@ -1,9 +1,9 @@
 spring:
   data:
     elasticsearch:
-      cluster-name: wf-es
+      cluster-name: my-application
       #节点的地址 注意api模式下端口号是9300，千万不要写成9200
-      cluster-nodes: 106.12.51.81:9300
+      cluster-nodes: localhost:9300
   datasource:
     name: search
     url: jdbc:mysql://106.12.51.81:3306/test

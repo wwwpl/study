@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
  */
 @Getter
 @Setter
-@Document(indexName = "test", type = "employee", shards = 1, replicas = 0, refreshInterval = "-1")
+@Document(indexName = "test-1", type = "employee", shards = 1, replicas = 0, refreshInterval = "-1")
 public class EmployeeOne {
 
     @Id

@@ -59,6 +59,12 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.wangyin.concrete</groupId>
+            <artifactId>concrete-client</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+
     </dependencies>
 
     <build>
