@@ -1,4 +1,4 @@
-package com.example.study.arithmetic.common;
+package com.example.study.arithmetic.common.sort;
 
 /**
  * 快速排序

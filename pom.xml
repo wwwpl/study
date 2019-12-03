@@ -39,6 +39,7 @@
         <module>study-rpc</module>
         <module>study-queue</module>
         <module>study-test</module>
+        <module>study-hanlp</module>
     </modules>
 
     <dependencies>
