@@ -9,14 +9,21 @@ import javax.validation.ConstraintValidatorContext;
 @Slf4j
 public class LengthValidator implements ConstraintValidator<Length, Object> {
 
+    private int min;
+    private int max;
+
     @Override
     public void initialize(Length constraintAnnotation) {
-        log.info("annotation length init");
+        min = constraintAnnotation.min();
+        max = constraintAnnotation.max();
     }
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        log.info(value.toString());
+
+        if (value.toString().length() >= min && value.toString().length() <= max) {
+            return true;
+        }
         //int length = Integer.valueOf(value.toString());
         return false;
     }
