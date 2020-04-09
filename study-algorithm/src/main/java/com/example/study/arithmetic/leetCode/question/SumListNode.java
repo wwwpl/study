@@ -51,7 +51,7 @@ public class SumListNode {
 
         ListNode listNode2 = new ListNode(5);
         listNode2.next = new ListNode(6);
-        listNode2.next.next = new ListNode(4);
+        listNode2.next.next = new ListNode(6);
 
         ListNode listNode3 = SumListNode.addTwoNumbers(listNode1, listNode2);
 
@@ -60,5 +60,7 @@ public class SumListNode {
         System.out.print(listNode3.next.value);
         System.out.print("->");
         System.out.print(listNode3.next.next.value);
+        System.out.print("->");
+        System.out.print(listNode3.next.next.next.value);
     }
 }

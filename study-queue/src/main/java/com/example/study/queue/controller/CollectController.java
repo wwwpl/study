@@ -19,10 +19,10 @@ public class CollectController {
     Listener listener;
 
     @GetMapping(value = "/send")
-    public void sendKafka() {
+    public void sendKafka(String arg) {
         try {
-            kafkaTemplate.send("test", "test", "123321");
-            log.info("发送kafka成功");
+            kafkaTemplate.send("test", "test", arg);
+            log.info("发送kafka成功:{}",arg);
         } catch (Exception e) {
             log.error("发送kafka失败:{}", e);
         }
