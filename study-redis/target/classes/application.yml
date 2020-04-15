@@ -1,0 +1,23 @@
+spring:
+  redis:
+    database: 0
+    host: 127.0.0.1
+    jedis:
+      pool:
+        #����������ݿ�������,�� 0 Ϊû������
+        max-active: 8
+        #���ȴ������е�����,�� 0 Ϊû������
+        max-idle: 8
+        #��������ӵȴ�ʱ�䡣���������ʱ�佫�ӵ��쳣����Ϊ-1��ʾ�����ơ�
+        max-wait: -1ms
+        #��С�ȴ������е�����,�� 0 Ϊû������
+        min-idle: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+      shutdown-timeout: 100ms
+    password: ''
+    port: 6379
