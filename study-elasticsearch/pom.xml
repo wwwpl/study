@@ -48,6 +48,23 @@
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0-jre</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wangyin.concrete</groupId>
+            <artifactId>concrete-client</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+
     </dependencies>
 
     <build>

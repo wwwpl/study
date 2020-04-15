@@ -17,12 +17,12 @@ public class Employee {
 
     @Id
     private String id;
-    @Field
+   // @Field
     private String firstName;
-    @Field
+    //  @Field
     private String lastName;
-    @Field
+    //  @Field
     private Integer age = 0;
-    @Field
-    private String about;
+    // @Field
+    private String more;
 }
