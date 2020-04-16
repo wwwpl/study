@@ -1,6 +1,7 @@
-package com.example.study.arithmetic.leetCode;
+package com.example.study.arithmetic.leetCode.nine;
 
 /**
+ * 949
  * 给定一个由 4 位数字组成的数组，返回可以设置的符合 24 小时制的最大时间。
  * <p>
  * 最小的 24 小时制时间是 00:00，而最大的是 23:59。从 00:00 （午夜）开始算起，过得越久，时间越大。
