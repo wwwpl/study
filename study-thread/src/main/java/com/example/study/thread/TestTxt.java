@@ -3,6 +3,7 @@ package com.example.study.thread;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.metadata.Sheet;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.StringUtils;
@@ -25,117 +26,36 @@ public class TestTxt {
             reader = new BufferedReader(new InputStreamReader(ins, "UTF-8"));
             String line = "";
             int index = 0;
-            int type = 0;
             while ((line = reader.readLine()) != null) {
                 index++;
-                line = line.replace(" ", "");
-                if (line.contains(",")) {
-                    String words = line.split(",")[0];
-                    if (words.contains("//")) {
-                        continue;
-                    }
-                    if (words.contains(",")) {
-                        continue;
-                    }
-                    if (words.contains("，")) {
-                        continue;
-                    }
-                    if (words.contains("!")) {
-                        continue;
-                    }
-                    if (words.contains("！")) {
-                        continue;
-                    }
-                    if (words.contains(".")) {
-                        continue;
-                    }
-                    if (words.contains("。")) {
-                        continue;
-                    }
-                    if (words.contains("？")) {
-                        continue;
-                    }
-                    if (words.contains("?")) {
-                        continue;
-                    }
-                    if (words.contains("、")) {
-                        continue;
-                    }
-                    if (words.contains("|")) {
-                        continue;
-                    }
-                    if (StringUtils.isEmpty(words)) {
-                        continue;
-                    }
-                    String typeList = line.substring(line.split(",")[0].length() + line.split(",")[1].length() + 2
-                            , line.length());
-//                typeList = typeList.replace("[", "").replace("]", "");
-//                System.out.println(typeList);
-//                    if (list.contains(words.toLowerCase())) {
-//                        continue;
-//                    }
-
-                    if (words.contains("http")) {
-                        continue;
-                    }
-                    System.out.println(typeList);
-                    if ("1,[\"商品*\"]".equals(typeList)) {
-                        System.out.println(line);
-                    }
-                    int one = 0;
-                    Word word = new Word();
-                    word.setWord(words.toLowerCase());
-                    if (typeList.contains("商品*") || typeList.contains("众筹*") || typeList.contains("租赁*")) {
-                        word.setTypeSp(1);
-                        one++;
-                    }
-                    if (typeList.contains("功能服务*")) {
-                        word.setTypeGf(1);
-                        one++;
-                    }
-//                    if (typeList.contains("借钱*")) {
-//                        word.setTypeJq(1);
-//                        one++;
-//                    }
-                    if (typeList.contains("基金*")) {
-                        word.setTypeJj(1);
-                        one++;
-                    }
-                    if (typeList.contains("股票*")) {
-                        word.setTypeGp(1);
-                        one++;
-                    }
-//                    if (typeList.contains("理财*")) {
-//                        word.setTypeLc(1);
-//                        one++;
-//                    }
-//                    if (typeList.contains("高端理财*")) {
-//                        word.setTypeGdlc(1);
-//                        one++;
-//                    }
-//                    if (typeList.contains("保险*")) {
-//                        word.setTypeBx(1);
-//                        one++;
-//                    }
-//                    if (typeList.contains("信用卡*")) {
-//                        word.setTypeXyk(1);
-//                        one++;
-//                    }
-//                    if (typeList.contains("优惠券*")) {
-//                        word.setTypeYhq(1);
-//                        one++;
-//                    }
-                    if (one > 0) {
-                        list.add(word);
-                    }
-//                    List<String> list1 = Arrays.asList(typeList.split(","));
-//                    System.out.println(JSONObject.toJSON(list1));
+                if (NumberUtils.isNumber(line)) {
+                    continue;
                 }
-
-
+                if (line.contains(",")||line.contains("http:")||line.contains("https:")){
+                    continue;
+                }
+                System.out.println(line);
+                Word word = new Word();
+                word.setTypeYhq(0);
+                word.setTypeXyk(0);
+                word.setTypeBx(0);
+                word.setTypeGdlc(0);
+                word.setTypeLc(0);
+                word.setTypeGp(0);
+                word.setTypeGf(0);
+                word.setTypeJq(0);
+                word.setTypeSp(0);
+                word.setTypeJj(0);
+                word.setWord(line.toLowerCase());
+                if (list!=null&&list.contains(word)){
+                    continue;
+                }
+                if (index >= 100000) {
+                    break;
+                }
+                list.add(word);
             }
             System.out.println("数据数据:" + index);
-            System.out.println("数据数据:" + type);
         } catch (Exception e) {
 
         } finally {

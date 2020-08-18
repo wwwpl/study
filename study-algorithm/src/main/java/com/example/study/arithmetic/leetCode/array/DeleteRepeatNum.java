@@ -1,5 +1,7 @@
 package com.example.study.arithmetic.leetCode.array;
 
+import java.math.BigDecimal;
+
 /**
  * @author F.W
  * @date 2019/3/12 18:37
@@ -26,7 +28,13 @@ public class DeleteRepeatNum {
     }
 
     public static void main(String[] args) {
-        int[] nums = {0,1,1,2,2,3,3,4};
-        System.out.println(removeDuplicates(nums));
+//        int[] nums = {0,1,1,2,2,3,3,4};
+//        System.out.println(removeDuplicates(nums));
+        double a = 1.5026770106008058e-10;
+        BigDecimal b = new BigDecimal( 12.9802322387695312e-08);
+        double f1 = b.setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("f1 是小数点后只有两位的双精度类型数据：" + f1);
+        System.out.println(a);
     }
+
 }
